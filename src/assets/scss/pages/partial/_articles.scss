@@ -1,0 +1,46 @@
+@use "@scss/abstract/index";
+
+.articles-discription {
+  p {
+    max-width: 70rem;
+    font-size: 17px;
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.article-read {
+  display: inline-block;
+  position: relative;
+  color: #aa272f;
+  font-size: 17px;
+  font-weight: 300;
+  @include index.minMedia(550px) {
+    font-size: 18px;
+  }
+  @include index.minMedia(800px) {
+    font-size: 20px;
+  }
+  &:before {
+    content: "›";
+    position: absolute;
+    bottom: -3.7px;
+    right: -15px;
+    font-size: 25px;
+    color: #aa272f;
+    transition: all 0.2s ease;
+    @include index.minMedia(550px) {
+      bottom: -3px;
+    }
+  }
+  &:hover {
+    color: #881e26;
+    &:before {
+      color: #881e26;
+    }
+  }
+}

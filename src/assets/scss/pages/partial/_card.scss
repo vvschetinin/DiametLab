@@ -1,0 +1,23 @@
+@use "@scss/abstract/index";
+
+.card-item {
+  height: auto;
+  // background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem;
+  @include index.minMedia(800px) {
+    height: 100%;
+  }
+  .card-content {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+  p {
+    font-size: 16px;
+    @include index.minMedia(550px) {
+      font-size: 17px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 18px;
+    }
+  }
+}

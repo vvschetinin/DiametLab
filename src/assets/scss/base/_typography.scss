@@ -1,0 +1,49 @@
+@use "@scss/abstract/index";
+@use "fonts";
+@use "titles";
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding: 200px;
+  @include index.minMedia(800px) {
+    font-size: index.$base-font-size;
+  }
+}
+
+body {
+  font-family: index.$text-font-stack;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: index.$base-line-height;
+  background-color: var(--color-theme-body);
+  color: var(--color-text-dark);
+  &::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h3 {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+p {
+  height: auto;
+  text-rendering: optimizeLegibility;
+  @include index.minMedia(800) {
+    letter-spacing: 0.1px;
+  }
+  & + p {
+    margin-top: 1rem;
+    @include index.minMedia(800px) {
+      margin-top: 0.85rem;
+    }
+  }
+}

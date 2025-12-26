@@ -1,0 +1,22 @@
+// _functions.scss
+
+@use "sass:map";
+@use "variables" as vars;
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+	@if str-index($string, $search) {
+		@return str-slice($string, 1, str-index($string, $search) - 1) + $replace +
+			str-replace(
+				str-slice($string, str-index($string, $search) + str-length($search)),
+				$search,
+				$replace
+			);
+	}
+	@return $string;
+}

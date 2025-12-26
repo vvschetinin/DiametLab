@@ -1,0 +1,162 @@
+// ==================== MODULES ====================
+@use "sass:math";
+@use "sass:map";
+@use "@scss/abstract/index";
+
+// ==================== VARIABLES ====================
+$gutter: 30px;
+
+// ==================== MIXINS ====================
+@mixin respond-min($key) {
+  @if map.has-key(index.$grid-breakpoints, $key) {
+    $value: map.get(index.$grid-breakpoints, $key);
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$key}` не существует.";
+  }
+}
+
+// ==================== WIDTH CLASSES ====================
+@for $i from 1 through 100 {
+  .col-#{$i} {
+    $percent: math.div($i, 100);
+    flex: 0 0 #{math.percentage($percent)};
+    max-width: #{math.percentage($percent)};
+  }
+}
+
+// ==================== RESPONSIVE CLASSES ====================
+@each $key, $value in index.$grid-breakpoints {
+  @if $key != xs {
+    // xs — по умолчанию
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .col-#{$key}-#{$i} {
+          $percent: math.div($i, 100);
+          flex: 0 0 #{math.percentage($percent)};
+          max-width: #{math.percentage($percent)};
+        }
+      }
+    }
+  }
+}
+
+// ==================== OFFSET CLASSES ====================
+// Сдвиг колонок вправо через margin-left
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    @for $i from 1 through 100 {
+      .offset-#{$i} {
+        margin-left: #{math.percentage(math.div($i, 100))};
+      }
+    }
+  } @else {
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .offset-#{$key}-#{$i} {
+          margin-left: #{math.percentage(math.div($i, 100))};
+        }
+      }
+    }
+  }
+}
+
+// ==================== PUSH/PULL CLASSES ====================
+// Перемещение колонок влево/вправо через position: relative
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    @for $i from 1 through 100 {
+      .push-#{$i} {
+        left: #{math.percentage(math.div($i, 100))};
+        position: relative;
+      }
+      .pull-#{$i} {
+        right: #{math.percentage(math.div($i, 100))};
+        position: relative;
+      }
+    }
+  } @else {
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .push-#{$key}-#{$i} {
+          left: #{math.percentage(math.div($i, 100))};
+          position: relative;
+        }
+        .pull-#{$key}-#{$i} {
+          right: #{math.percentage(math.div($i, 100))};
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+// ==================== HIDE/SHOW ELEMENTS ====================
+// Контроль видимости элементов по размеру экрана
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    .hidden {
+      display: none !important;
+    }
+    .visible {
+      display: block !important;
+    }
+  } @else {
+    @include respond-min($key) {
+      .hidden-#{$key} {
+        display: none !important;
+      }
+      .visible-#{$key} {
+        display: block !important;
+      }
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 20px;
+  margin: 0 auto;
+  @include index.minMedia(550px) {
+    padding: 0 30px;
+  }
+  @include index.minMedia(800px) {
+    padding: 0 50px;
+  }
+  @include index.minMedia(1400px) {
+    padding: 0 150px;
+  }
+  @include index.minMedia(1800px) {
+    padding: 0 200px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{math.div($gutter, 2)};
+  margin-right: -#{math.div($gutter, 2)};
+}
+
+.col,
+[class^="col-"],
+[class*=" col-"] {
+  padding-left: #{math.div($gutter, 2)};
+  padding-right: #{math.div($gutter, 2)};
+  min-height: 1px;
+  position: relative;
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.no-gutters {
+  margin-left: 0;
+  & > [class*="col-"],
+  & > [class^="col-"] {
+    padding: 0;
+  }
+}

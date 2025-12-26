@@ -1,0 +1,50 @@
+@use "@scss/abstract/index";
+
+.qrcode-imgwrap {
+  padding-top: 70%;
+  @include index.minMedia(550px) {
+    padding-top: 60%;
+  }
+  @include index.minMedia(800px) {
+    height: 100%;
+  }
+}
+
+.qrcode-discription {
+  position: relative;
+  padding: 1rem 0;
+  margin-top: 2.5rem;
+  @include index.minMedia(1100px) {
+    margin-top: 0;
+    padding: 2rem 0;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+  }
+  .qrcode {
+    display: block;
+    margin: 1rem 0 1.2rem 0;
+    width: 120%;
+    max-width: 110px;
+    height: auto;
+    @include index.minMedia(800px) {
+      margin: 1rem 0;
+      max-width: 130px;
+    }
+    @include index.minMedia(1100px) {
+      max-width: 150px;
+    }
+  }
+}

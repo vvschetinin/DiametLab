@@ -1,0 +1,28 @@
+@use "@scss/abstract/index";
+
+.cost-discription {
+  padding: 2rem 0;
+  color: #fff;
+  @include index.minMedia(1100px) {
+    padding: 3rem 0;
+  }
+  h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+  }
+}

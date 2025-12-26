@@ -1,0 +1,37 @@
+@use "@scss/abstract/index";
+
+.logowrap {
+  display: flex;
+  align-items: center;
+  height: auto;
+  position: relative;
+  line-height: 0.5;
+  span {
+    display: none;
+    padding-left: 1rem;
+    font-size: 20px;
+    font-weight: 400;
+    @include index.minMedia(800px) {
+      display: inline-block;
+    }
+  }
+}
+
+.logotype {
+  height: 100%;
+  height: 75px;
+  width: auto;
+  @include index.minMedia(800px) {
+    height: 100px;
+  }
+}
+
+.header.is-active {
+  .logotype {
+    height: 50px;
+    transition: all 0.4s ease;
+    @include index.minMedia(800px) {
+      height: 70px;
+    }
+  }
+}

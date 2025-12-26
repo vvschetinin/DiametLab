@@ -1,0 +1,175 @@
+// ==================== MODULES ====================
+@use "sass:math";
+@use "sass:map";
+@use "@scss/abstract/index";
+
+// ==================== VARIABLES ====================
+$gutter: 36px;
+
+// ==================== MIXINS ====================
+@mixin respond-min($key) {
+  @if map.has-key(index.$grid-breakpoints, $key) {
+    $value: map.get(index.$grid-breakpoints, $key);
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$key}` не существует.";
+  }
+}
+
+// ==================== BASE WIDTH CLASSES ====================
+// .col-25, .col-50, .col-100 — для xs (по умолчанию)
+@for $i from 1 through 100 {
+  .col-#{$i} {
+    $percent: math.div($i, 100);
+    flex: 0 0 #{math.percentage($percent)};
+    max-width: #{math.percentage($percent)};
+  }
+}
+
+// ==================== RESPONSIVE CLASSES (NEW NOTATION) ====================
+// .col-50--sm, .col-33--md, .col-25--lg и т.д.
+@each $key, $value in index.$grid-breakpoints {
+  @if $key != xs {
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .col-#{$i}--#{$key} {
+          $percent: math.div($i, 100);
+          flex: 0 0 #{math.percentage($percent)};
+          max-width: #{math.percentage($percent)};
+        }
+      }
+    }
+  }
+}
+
+// ==================== OFFSET CLASSES ====================
+// .offset-10, .offset-30--md
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    @for $i from 1 through 100 {
+      .offset-#{$i} {
+        margin-left: #{math.percentage(math.div($i, 100))};
+      }
+    }
+  } @else {
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .offset-#{$i}--#{$key} {
+          margin-left: #{math.percentage(math.div($i, 100))};
+        }
+      }
+    }
+  }
+}
+
+// ==================== PUSH/PULL CLASSES ====================
+// .push-20, .pull-30--md
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    @for $i from 1 through 100 {
+      .push-#{$i} {
+        left: #{math.percentage(math.div($i, 100))};
+        position: relative;
+      }
+      .pull-#{$i} {
+        right: #{math.percentage(math.div($i, 100))};
+        position: relative;
+      }
+    }
+  } @else {
+    @include respond-min($key) {
+      @for $i from 1 through 100 {
+        .push-#{$i}--#{$key} {
+          left: #{math.percentage(math.div($i, 100))};
+          position: relative;
+        }
+        .pull-#{$i}--#{$key} {
+          right: #{math.percentage(math.div($i, 100))};
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+// ==================== HIDE/SHOW ELEMENTS ====================
+// .hidden, .visible, .hidden-sm, .visible-md
+@each $key, $value in index.$grid-breakpoints {
+  @if $key == xs {
+    .hidden {
+      display: none !important;
+    }
+    .visible {
+      display: block !important;
+    }
+  } @else {
+    @include respond-min($key) {
+      .hidden-#{$key} {
+        display: none !important;
+      }
+      .visible-#{$key} {
+        display: block !important;
+      }
+    }
+  }
+}
+
+// ==================== CONTAINER ====================
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 120rem;
+  padding: 0 18px;
+  margin: 0 auto;
+  z-index: 1;
+  @include index.minMedia(550px) {
+    padding: 0 1.25rem;
+  }
+  @include index.minMedia(800px) {
+    padding: 0 3.75rem;
+  }
+  @include index.minMedia(1100px) {
+    padding: 0 6.25rem;
+  }
+  &--middle {
+    @extend .container;
+    max-width: 105rem;
+  }
+  &--small {
+    @extend .container;
+    max-width: 67rem;
+  }
+}
+
+// ==================== ROW & COL ====================
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{math.div($gutter, 2)};
+  margin-right: -#{math.div($gutter, 2)};
+}
+
+.col,
+[class^="col-"],
+[class*=" col-"] {
+  padding-left: #{math.div($gutter, 2)};
+  padding-right: #{math.div($gutter, 2)};
+  min-height: 1px;
+  position: relative;
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+// ==================== NO GUTTERS ====================
+.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+  & > [class*="col-"],
+  & > [class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

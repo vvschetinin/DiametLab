@@ -1,0 +1,5 @@
+@use "@scss/abstract/index";
+
+$styles: ();
+
+@include index.generate_styles($styles);

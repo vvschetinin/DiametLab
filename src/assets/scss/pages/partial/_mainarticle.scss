@@ -1,0 +1,44 @@
+@use "@scss/abstract/index";
+
+.mainarticle-content {
+  margin-top: 2rem;
+  h2 {
+    font-size: 22px;
+    font-weight: 400;
+    padding: 1rem 0 0.5rem 0;
+    @include index.minMedia(550px) {
+      font-size: 24px;
+    }
+  }
+  p {
+    font-size: 17px;
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+  }
+}
+
+.article-inner {
+  margin-top: 1rem;
+  padding-left: 2rem;
+  li {
+    position: relative;
+    font-size: 17px;
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    &:before {
+      content: "*";
+      position: absolute;
+      font-size: 22px;
+      left: -2rem;
+      color: #111;
+    }
+    & + li {
+      margin-top: 0.5rem;
+    }
+  }
+  span {
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,97 @@
+@use "@scss/abstract/index";
+
+.hero {
+  height: auto;
+  overflow: hidden;
+  background-color: #fff;
+  .content-wrap {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 99%;
+      width: 27%;
+      height: 100%;
+      background-color: #fff;
+      clip-path: polygon(0 0, 100% 0, 0 112%, 0 100%);
+      z-index: 2;
+    }
+  }
+  .visual-wrap {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    @include index.minMedia(800px) {
+      padding: 0;
+    }
+    @include index.minMedia(1400px) {
+      padding: 0;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.05);
+      z-index: 1;
+    }
+  }
+}
+
+.masthead-title {
+  padding: 3.6rem 0;
+  @include index.minMedia(1100px) {
+    padding: 1rem 0;
+  }
+  .button-wrap {
+    margin-top: 2.5rem;
+  }
+  .subtitle {
+    margin-top: 1.5rem;
+    line-height: 1.2;
+    font-size: 28px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #aa272f;
+    @include index.minMedia(550px) {
+      font-size: 32px;
+    }
+    @include index.minMedia(1100px) {
+      font-size: calc(45px * 0.75);
+    }
+    @include index.minMedia(1400px) {
+      font-size: 34px;
+    }
+  }
+}
+
+.masthead-imgwrap {
+  height: auto;
+  position: relative;
+  padding-top: 72%;
+  margin-right: calc(-8.5% - 15px);
+  margin-top: 2px;
+  margin-bottom: 2px;
+  min-height: 100%;
+  @include index.minMedia(550px) {
+    margin-right: 0;
+  }
+  @include index.minMedia(1100px) {
+    min-height: calc(70vh - 100px);
+  }
+  @include index.minMedia(1400px) {
+    min-height: calc(80vh - 120px);
+  }
+  .item-present {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+  }
+}

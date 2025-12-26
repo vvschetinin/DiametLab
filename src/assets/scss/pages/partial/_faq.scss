@@ -1,0 +1,81 @@
+@use "@scss/abstract/index";
+
+/* style.css */
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1.5rem;
+  @include index.minMedia(1100px) {
+    margin-top: 2.5rem;
+  }
+}
+
+.faq-list li {
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden; /* Важно для скрытия контента во время анимации */
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  font-size: 18px;
+  color: #111;
+  font-weight: 400;
+  @include index.minMedia(800px) {
+    font-size: 20px;
+  }
+}
+
+.faq-question:hover {
+  background-color: #f0f0f0;
+}
+
+.faq-answer {
+  /* Эти стили будут управляться JavaScript */
+  max-height: 0;
+  overflow: hidden;
+  /* Убрали padding из transition, так как он будет на внутреннем элементе */
+  transition: max-height 0.3s ease-out;
+  p {
+    font-size: 16px;
+    color: #555;
+    @include index.minMedia(800px) {
+      font-size: 18px;
+    }
+  }
+}
+
+/* !!! Важно: Отступы применяем к внутреннему параграфу !!! */
+.faq-answer p {
+  margin: 0;
+  padding: 10px 20px 15px 20px; /* Здесь устанавливаем желаемые отступы для контента */
+  box-sizing: border-box; /* Убедитесь, что padding включается в общую ширину/высоту элемента */
+}
+
+.faq-list li.active .faq-question {
+  background-color: #e0e0e0;
+  border-bottom: none;
+}
+
+.faq-toggle-icon {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: transform 0.3s ease-out;
+}
+
+.faq-list li.active .faq-toggle-icon {
+  transform: rotate(45deg);
+  opacity: 0;
+}

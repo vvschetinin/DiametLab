@@ -1,0 +1,168 @@
+@use "@scss/abstract/index";
+
+.our-contacts {
+  height: auto;
+  padding: 0 0 2rem 0;
+  @include index.minMedia(1100px) {
+    padding: 0 0 3rem 0;
+  }
+}
+
+.contact-list {
+  li {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.35;
+    span {
+      display: block;
+      position: relative;
+      font-size: 17px;
+      font-weight: 300;
+      padding-left: 1.5rem;
+      @include index.minMedia(550px) {
+        font-size: 18px;
+      }
+      &:first-child {
+        margin-top: 1rem;
+      }
+      & + span {
+        margin-top: 0.5rem;
+      }
+    }
+    & + li {
+      margin-top: 1rem;
+    }
+    a {
+      color: #111;
+      transition: all 0.25s ease;
+      &:hover {
+        color: #aa272f;
+      }
+    }
+  }
+}
+
+.linkwrap{
+  a{
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 400;
+    text-decoration: underline;
+    color: #aa272f;
+    transition: all 0.25s ease;
+    @include index.minMedia(550px) {
+      font-size: 30px;
+    }
+    &:hover {
+      color: #111;
+    }
+  }
+}
+
+.map-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 400px;
+  background-color: azure;
+  span {
+    display: inline-block;
+  }
+}
+
+
+// ============================================
+
+.contact-block{
+  padding: 0;
+  span{
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 300;
+    padding-bottom: .5rem;
+    margin-top: 1.5rem;
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+  li+li{
+    margin-top: 1rem;
+    line-height: 1;
+  }
+  a{
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-block;
+    line-height: 1;
+    letter-spacing: 1px;
+    @include index.minMedia(550px) {
+      font-size: 24px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 28px;
+    }
+    @include index.minMedia(1100px) {
+      font-size: 36px;
+    }
+  }
+}
+
+.contact-address{
+  h3{
+    font-size: 26px;
+    font-weight: 300;
+    padding-bottom: .5rem;
+    margin-top: 1.5rem;
+  }
+  p{
+    display: block;
+    position: relative;
+    font-size: 17px;
+    font-weight: 300;
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+  }
+}
+
+.contacts{
+  .qr-wrap{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    @include index.minMedia(1100px) {
+      border-left: 1px solid rgba(197, 196, 196, 0.75);
+    }
+    p{
+      margin: 0 auto;
+      display: block;
+      position: relative;
+      font-size: 17px;
+      font-weight: 300;
+      max-width: 550px;
+      @include index.minMedia(550px) {
+        font-size: 18px;
+      }
+      &+p{
+        margin-top: 3rem;
+      }
+    }
+  }
+  .img-wrap{
+    margin-top: 50px;
+    padding: 1rem;
+    background-color: rgba(197, 196, 196, 0.75);
+    display: inline-block;
+    @include index.minMedia(800px) {
+      margin-top: 80px;
+    }
+    @include index.minMedia(1100px) {
+      margin-top: 150px;
+    }
+  }
+  .map-wrapper{
+    margin-top: 0.5rem;
+    min-height: 500px;
+  }
+}

@@ -1,0 +1,65 @@
+@use "@scss/abstract/index";
+
+.about-discription {
+  position: relative;
+  @include index.minMedia(800px) {
+    padding-left: 1rem;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #aa272f;
+    display: none;
+    @include index.minMedia(800px) {
+      display: inline-block;
+    }
+  }
+  h2 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 400;
+    padding-bottom: 1rem;
+    @include index.minMedia(800px) {
+      padding-bottom: 0.25rem;
+      font-size: 24px;
+    }
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    &.p-attestat {
+      font-weight: 500;
+      color: #aa272f;
+    }
+  }
+  a {
+    display: inline-block;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #aa272f;
+    transition: all .2s ease;
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+  }
+}

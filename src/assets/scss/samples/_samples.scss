@@ -1,0 +1,105 @@
+@use "@scss/abstract/index";
+
+:root {
+  --color-text-dark: #111;
+  --color-accent: #012456;
+}
+
+.h2-title {
+  font-size: 28px;
+  color: var(--color-text-green);
+  @include index.minMedia(550) {
+    font-size: 1.8rem;
+    color: var(--color-text-green);
+  }
+  @media (max-height: 450px) and (orientation: landscape) {
+    font-size: 30px;
+  }
+}
+
+.button {
+  background-color: var(--color-accent); /* Используем цвет #012456 */
+  color: var(--color-text-dark); /* Текст будет #111 */
+  padding: 10px 20px;
+  border: none;
+}
+
+.h2-testcolor {
+  font-size: 28px;
+  color: var(--color-text-brand);
+  @include index.minMedia(550px) {
+    font-size: calc(1.8rem * var(--font-size-multiplier));
+    color: var(--color-text-primary);
+  }
+  @media (max-height: 450px) and (orientation: landscape) {
+    font-size: 30px;
+  }
+}
+
+.small-text {
+  font-size: calc(12px * var(--font-size-multiplier));
+}
+
+.large-text {
+  font-size: calc(24px * var(--font-size-multiplier));
+}
+
+//  Горизонтальная ориентация
+
+@mixin mobileLandscape($max-height: 450px) {
+  @media screen and (max-height: $max-height) and (orientation: landscape) {
+    @content;
+  }
+}
+// $max-height — параметр, который можно задавать при вызове миксина.
+// По умолчанию значение равно 450px, но вы можете изменить его на любое нужное
+
+// Использование значения по умолчанию
+.hero--large {
+  @include index.mobileLandscape {
+    max-height: 400px;
+  }
+}
+
+// Передача собственного значения
+.button {
+  // Только для ландшафта с высотой < 300px
+  @include index.mobileLandscape(300px) {
+    padding: 8px 16px;
+  }
+}
+
+// Полный пример стилизации
+.card {
+  padding: 20px;
+
+  // Адаптация под ландшафт с высотой <= 400px
+  @include index.mobileLandscape(400px) {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  // Адаптация под ландшафт с высотой <= 300px
+  @include index.mobileLandscape(300px) {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+// Удаление полосы прокрутки
+body {
+  font-family: index.$text-font-stack;
+  font-size: clamp(17px, calc(18px + 20 * ((100vw - 600px) / 1080)), 20px);
+  font-weight: 300;
+  line-height: index.$base-line-height;
+  background-color: var(--color-theme-body);
+  color: var(--color-text-primary);
+  &.no-scroll {
+    // Класс добавляется к body через JS / TS
+    &::-webkit-scrollbar {
+      width: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+  }
+}

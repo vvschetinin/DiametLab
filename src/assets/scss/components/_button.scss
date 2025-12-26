@@ -1,0 +1,169 @@
+@use "@scss/abstract/index";
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0.85rem 1.05rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition:
+    background-color 0.25s ease-out,
+    color 0.25s ease-out;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  @include index.minMedia(550px) {
+    font-size: 1rem;
+  }
+  @include index.minMedia(800px) {
+    padding: 1.0625rem 1.25rem;
+  }
+  &--hero {
+    position: relative;
+    border: 2px solid #000;
+    color: #000;
+    text-transform: uppercase;
+    padding-right: 2.3rem;
+    &:before {
+      content: "🡇";
+      position: absolute;
+      font-size: 22px;
+      top: 1rem;
+      right: 0.7rem;
+      color: #000;
+      opacity: 0.8;
+    }
+    &:hover {
+      font-weight: 400;
+      background-color: #aa272f;
+      color: #fff;
+      border: 2px solid #aa272f;
+      &:before {
+        color: #fff;
+        opacity: 0.7;
+      }
+    }
+  }
+  &--startcontact {
+    position: relative;
+    background-color: #aa272f;
+    border: 2px solid #aa272f;
+    color: #fff;
+    text-transform: uppercase;
+    &:hover {
+      background-color: #881e26;
+      border-color: #881e26;
+      color: #fff;
+    }
+  }
+}
+
+.nav-toggle {
+  background: 0 0;
+  border: 0;
+  position: absolute;
+  z-index: 1000;
+  width: 32px;
+  height: 32px;
+  top: calc(50% - 20px);
+  right: 0.25rem;
+  @include index.minMedia(800px) {
+    right: 0;
+  }
+  &__line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    max-width: 26px;
+    height: 2px;
+    right: 0;
+    background: #000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &:first-child {
+      top: 8px;
+    }
+    &:nth-child(2) {
+      top: 16px;
+    }
+    &:nth-child(3) {
+      top: 25px;
+    }
+  }
+}
+
+.close-btn {
+  position: absolute;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 99999;
+  @include index.minMedia(550px) {
+    top: 40px;
+    right: 20px;
+  }
+  @include index.minMedia(800px) {
+    top: 50px;
+    right: 50px;
+  }
+  @include index.minMedia(1400px) {
+    right: 70px;
+  }
+  span {
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    content: "";
+    display: block;
+    background: #000;
+    right: 0;
+    top: 15px;
+    @include index.minMedia(550px) {
+      width: 27px;
+    }
+    @include index.minMedia(800px) {
+      width: 30px;
+    }
+    &:first-child {
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.find-btn,
+.form-btn,
+.start-project-btn,
+.pagination-btn,
+.view-btn {
+  @extend .button;
+}
+
+.form-btn {
+  padding: 15px 20px;
+  text-transform: uppercase;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  color: #000;
+  line-height: 1;
+  transition: all 0.3s ease;
+  @include index.minMedia(800px) {
+    padding: 17px 22px;
+  }
+  &:hover {
+    border: 2px solid rgba(0, 0, 0, 0.8);
+  }
+}
+
+.form-btn:disabled {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  cursor: default;
+}

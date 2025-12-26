@@ -1,0 +1,53 @@
+@use "@scss/abstract/index";
+
+.footer {
+  padding: 1.8rem 0;
+  border-top: 1px solid rgba(197, 196, 196, 0.75);
+  @include index.minMedia(800px) {
+    padding: 2.5rem 0;
+  }
+}
+
+.footer-copyright {
+  width: 100%;
+  font-family: "SourceSansPro", sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  @include index.minMedia(800px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  span {
+    position: relative;
+    display: block;
+    padding-left: 0;
+    @include index.minMedia(550px) {
+      display: inline-block;
+      padding-left: 24px;
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      display: none;
+      @include index.minMedia(550px) {
+        display: inline-block;
+        left: 12px;
+        height: 100%;
+        width: 1px;
+        background-color: #111;
+        opacity: 0.5;
+      }
+    }
+    &:first-child {
+      display: inline-block;
+      padding-left: 0;
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "@scss/abstract/index";
+
+section {
+  position: relative;
+  display: block;
+  z-index: 1;
+  min-height: 50px;
+  &.section-type {
+    padding: 3.6rem 0;
+    @include index.minMedia(1100px) {
+      padding: 5.6rem 0;
+    }
+  }
+  &.section-inner {
+    padding: 0;
+    padding-top: 3.6rem;
+    @include index.minMedia(1100px) {
+      padding-top: 5.6rem;
+    }
+  }
+}

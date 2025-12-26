@@ -1,0 +1,15 @@
+// 1. Variables
+@forward "variables";
+
+// 2. Functions
+@forward "functions";
+
+// 3. Mixins
+@forward "mixins";
+
+// 4. Fonts (if you have a separate file for font imports)
+// @use "fonts" as *;
+
+// 5. Your component stylesheets (example)
+// @use "components/button" as *;
+// @use "components/header" as *;

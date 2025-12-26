@@ -1,0 +1,33 @@
+@use "@scss/abstract/index";
+
+$styles: (
+	".flex-wrap": (
+		flex-wrap: wrap,
+	),
+	".justify-center": (
+		justify-content: center,
+	),
+	".justify-start": (
+		justify-content: flex-start,
+	),
+	".justify-end": (
+		justify-content: flex-end,
+	),
+	".justify-between": (
+		justify-content: space-between,
+	),
+	".items-center": (
+		align-items: center,
+	),
+	".items-stretch": (
+		align-items: stretch,
+	),
+	".items-start": (
+		align-items: flex-start,
+	),
+	".items-end": (
+		align-items: flex-end,
+	),
+);
+
+@include index.generate_styles($styles);

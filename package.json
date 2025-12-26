@@ -1,0 +1,38 @@
+{
+  "name": "ui-start",
+  "keywords": [],
+  "author": "Vladlen Schetinin",
+  "license": "MIT",
+  "private": true,
+  "version": "1.0.2",
+  "type": "module",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@types/inputmask": "^5.0.7",
+    "@types/node": "^22.10.7",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "glob": "^11.0.1",
+    "postcss": "^8.5.1",
+    "prettier": "^3.6.0",
+    "sass": "^1.83.0",
+    "sass-reset": "^1.0.4",
+    "typescript": "~5.6.2",
+    "vite": "^7.0.0"
+  }
+}

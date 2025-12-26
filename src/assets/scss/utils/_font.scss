@@ -1,0 +1,21 @@
+@use "@scss/abstract/index";
+
+$styles: (
+  ".font-italic": (
+    font-style: italic,
+  ),
+  ".font-light": (
+    font-weight: 300,
+  ),
+  ".font-normal": (
+    font-weight: 400,
+  ),
+  ".font-middle": (
+    font-weight: 500,
+  ),
+  ".font-bold": (
+    font-weight: 700,
+  ),
+);
+
+@include index.generate_styles($styles);

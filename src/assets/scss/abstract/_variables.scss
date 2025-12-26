@@ -1,0 +1,54 @@
+@use "sass:color";
+
+:root {
+  --color-text-brand: #df4f4f;
+  --color-text-white: #fff;
+  --color-text-primary: #ccc;
+  --color-text-green: #18e591;
+  --color-text-greydark: #666;
+  --color-text-dark: #111;
+  --color-text-black: #000;
+  --color-text-error: #ff0000;
+}
+
+:root {
+  --color-theme-body: #fff;
+  --color-theme-accent: #F3FCFF;
+  --color-theme-type: #f2f2f2;
+  --color-theme-gray: #e5e5e5;
+  --color-theme-green: #18e591;
+  --color-theme-dark: #1d1d1d;
+  --color-theme-black: #000;
+  --color-theme-red: #ff0000;
+  --color-theme-purple: #362196;
+  --color-theme-hero: #050029;
+}
+
+:root {
+  --font-size-multiplier: 1.12;
+}
+/* Font stacks */
+$text-font-stack: "Roboto", sans-serif !default;
+$code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace !default;
+
+/* Font settings */
+$base-font-size: 16px !default;
+$base-line-height: 1.4 !default;
+$font-weight: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+) !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 550px,
+  md: 800px,
+  lg: 1100px,
+  xl: 1400px,
+  xxl: 1800px,
+) !default;

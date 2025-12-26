@@ -1,0 +1,66 @@
+@use "@scss/abstract/index";
+
+.repair-description {
+  position: relative;
+  padding: 1rem 0;
+  @include index.minMedia(800px) {
+    padding-left: 1rem;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #aa272f;
+    display: none;
+    @include index.minMedia(800px) {
+      display: inline-block;
+    }
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+  }
+  .repair-list {
+    padding: 1rem 0;
+    li {
+      position: relative;
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 300;
+      padding-left: 2rem;
+      span {
+        display: block;
+      }
+      @include index.minMedia(550px) {
+        font-size: 18px;
+      }
+      @include index.minMedia(800px) {
+        font-size: 22px;
+        line-height: 1.35;
+      }
+      & + li {
+        margin-top: 0.5rem;
+      }
+      &:before {
+        content: "★";
+        position: absolute;
+        left: 0;
+        color: #aa272f;
+      }
+    }
+  }
+}

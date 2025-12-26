@@ -1,0 +1,30 @@
+@use "@scss/abstract/index";
+
+$styles: (
+	".display-block": (
+		display: block,
+	),
+	".display-inline-block": (
+		display: inline-block,
+	),
+	".display-inline": (
+		display: inline,
+	),
+	".display-table": (
+		display: table,
+	),
+	".display-none": (
+		display: none,
+	),
+	".flex": (
+		display: flex,
+	),
+	".inline-flex": (
+		display: inline-flex,
+	),
+	".grid": (
+		display: grid,
+	),
+);
+
+@include index.generate_styles($styles);

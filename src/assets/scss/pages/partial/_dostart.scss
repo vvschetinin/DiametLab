@@ -1,0 +1,73 @@
+@use "@scss/abstract/index";
+
+.dostart-imgwrap {
+  padding-top: 70%;
+  @include index.minMedia(550px) {
+    padding-top: 60%;
+  }
+  @include index.minMedia(800px) {
+    height: 100%;
+  }
+}
+
+.dostart-discription {
+  position: relative;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  @include index.minMedia(800px) {
+    margin-bottom: 3rem;
+  }
+  @include index.minMedia(1100px) {
+    padding-bottom: 2rem;
+    margin-bottom: 0;
+    padding-left: 0;
+    &:before {
+      display: none;
+    }
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+  }
+}
+
+.dostart-list {
+  padding: 1.5rem 0;
+  li {
+    position: relative;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 300;
+    padding-left: 2rem;
+    span {
+      display: block;
+    }
+    @include index.minMedia(550px) {
+      font-size: 18px;
+    }
+    @include index.minMedia(800px) {
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    & + li {
+      margin-top: 0.5rem;
+    }
+    &:before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: #aa272f;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "sass:math";
+@use "sass:map"; // Explicitly import map module
+@use "variables" as vars; // Import variables to use within mixins
+
+@mixin media($max-width) {
+  @media screen and (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin minMedia($min-width) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+//  Горизонтальная ориентация
+@mixin mobileLandscape($max-height: 450px) {
+  @media screen and (max-height: $max-height) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin square($size: 1em) {
+  width: $size;
+  height: $size;
+}
+
+@mixin generate_styles($styles) {
+  @each $class_name, $style_names in $styles {
+    #{$class_name} {
+      @each $style_name, $style_value in $style_names {
+        #{$style_name}: #{$style_value};
+      }
+    }
+  }
+  @each $bp, $val in vars.$grid-breakpoints {
+    @if $bp != "xs" {
+      @each $class_name, $style_names in $styles {
+        #{$class_name}--#{$bp} {
+          @include minMedia($val) {
+            @each $style_name, $style_value in $style_names {
+              #{$style_name}: #{$style_value};
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,3 +21,42 @@
     }
   }
 }
+
+.card-modif{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include index.minMedia(800px) {
+    flex-direction: row;
+  }
+  @include index.minMedia(1400px) {
+    flex-direction: column;
+  }
+  .visual-bg-light {
+    width: 100%;
+    padding-top: 65%;
+    @include index.minMedia(800px) {
+      padding-top: 65%;
+      width: 50%;
+    }
+    @include index.minMedia(1400px) {
+      padding-top: 65%;
+      width: 100%;
+    }
+  }
+  .card-content {
+    width: 100%;
+    padding: 1rem;
+    padding-top: 2rem;
+    @include index.minMedia(800px) {
+      width: 50%;
+      padding-top: 3rem;
+      padding-left: 1.5rem;
+    }
+    @include index.minMedia(1400px) {
+      width: 100%;
+      padding-top: 1rem;
+      padding: 1rem;
+    }
+  }
+}

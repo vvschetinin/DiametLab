@@ -6,6 +6,7 @@
     padding-top: 60%;
   }
   @include index.minMedia(800px) {
+    min-height: 550px;
     height: 100%;
   }
 }

@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return array;
   }
 
-  function displayRandomFaqItems(count: number = 15) {
+  function displayRandomFaqItems(count: number = 5) {
     faqList!.innerHTML = "";
     const shuffledItems = shuffleArray([...faqItems]);
     const itemsToDisplay = shuffledItems.slice(0, count);
